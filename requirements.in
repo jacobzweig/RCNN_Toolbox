@@ -1,0 +1,8 @@
+joblib
+matplotlib
+scikit-learn
+tabulate
+numpy
+-e git+https://github.com/Theano/Theano/archive/master.zip
+-e git+https://github.com/Lasagne/Lasagne/archive/master.zip
+
