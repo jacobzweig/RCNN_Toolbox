@@ -1,4 +1,4 @@
-# ECoG Decoding
+# RCNN Toolbox
 
 by Jacob Zweig @ [Northwestern University Visual perception, Neuroscience, and Cognition Lab](http://groups.psych.northwestern.edu/grabowecky_suzuki/Grabowecky_Suzuki_Lab/Research.html)
 
