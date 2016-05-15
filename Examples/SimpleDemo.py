@@ -21,6 +21,6 @@ X = []
 y = []
 
 model = RCNN.init(Chans, Length, nbClasses, nbRCL=6, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200)
-X_train, y_train, X_test, y_test = utils.SplitData(X, Y, params, train, test)
 
+X_train, y_train, X_test, y_test = utils.SplitData(X, Y)
 model.fit(X_train, y_train)
