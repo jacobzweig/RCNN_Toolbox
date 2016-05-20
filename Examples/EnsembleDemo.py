@@ -4,9 +4,9 @@ Demonstration of how to use the model ensembling functions
 
 import numpy as np
 import pandas as pd
-from RCNN_Toolbox import RCNN
-from RCNN_Toolbox import utils
-from RCNN_Toolbox.Ensembling import Ensemble
+from RCNN import ModelMaker
+from RCNN import utils
+from RCNN import Ensembling
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, BaggingClassifier, AdaBoostClassifier
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
@@ -27,20 +27,20 @@ nbClasses = len(np.unique(y))
 First, we'll make models with a variety of parameters. These will serve as level one models.
 The predictions of these level one models will later be combined.
 '''
-model1 = RCNN.init(Chans, Length, nbClasses, nbRCL=6, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200)
-model2 = RCNN.init(Chans, Length, nbClasses, nbRCL=6, nbFilters=64, earlystopping=True, patience=20, filtersize=3, epochs=200)
-model3 = RCNN.init(Chans, Length, nbClasses, nbRCL=6, nbFilters=128, earlystopping=True, patience=20, filtersize=3, epochs=200)
-model4 = RCNN.init(Chans, Length, nbClasses, nbRCL=6, nbFilters=150, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model1 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=6, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model2 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=6, nbFilters=64, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model3 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=6, nbFilters=128, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model4 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=6, nbFilters=150, earlystopping=True, patience=20, filtersize=3, epochs=200)
 
-model5 = RCNN.init(Chans, Length, nbClasses, nbRCL=8, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200)
-model6 = RCNN.init(Chans, Length, nbClasses, nbRCL=8, nbFilters=64, earlystopping=True, patience=20, filtersize=3, epochs=200)
-model7 = RCNN.init(Chans, Length, nbClasses, nbRCL=8, nbFilters=128, earlystopping=True, patience=20, filtersize=3, epochs=200)
-model8 = RCNN.init(Chans, Length, nbClasses, nbRCL=8, nbFilters=150, earlystopping=True, patience=10, filtersize=3)
+model5 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=8, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model6 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=8, nbFilters=64, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model7 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=8, nbFilters=128, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model8 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=8, nbFilters=150, earlystopping=True, patience=10, filtersize=3)
 
-model9 = RCNN.init(Chans, Length, nbClasses, nbRCL=7, nbFilters=33, earlystopping=True, patience=20, filtersize=3, epochs=200)
-model10 = RCNN.init(Chans, Length, nbClasses, nbRCL=7, nbFilters=6, earlystopping=True, patience=20, filtersize=3, epochs=200)
-model11 = RCNN.init(Chans, Length, nbClasses, nbRCL=7, nbFilters=128, earlystopping=True, patience=20, filtersize=3, epochs=200)
-model12 = RCNN.init(Chans, Length, nbClasses, nbRCL=7, nbFilters=150, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model9 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=7, nbFilters=33, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model10 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=7, nbFilters=6, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model11 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=7, nbFilters=128, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model12 = ModelMaker.init(Chans, Length, nbClasses, nbRCL=7, nbFilters=150, earlystopping=True, patience=20, filtersize=3, epochs=200)
 
 model_list = [model1, model2, model3, model4,
               model5, model6, model7, model8,    

@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements.in
 #
--e git+https://github.com/Theano/Theano.git@15c90dd3#egg=Theano==0.9.0.dev0.git
+Theano==0.8.0
 -e git+https://github.com/Lasagne/Lasagne.git@8f4f9b2#egg=Lasagne==0.2.git
 -e git+https://github.com/dnouri/nolearn.git@master#egg=nolearn==0.7.git
 cycler==0.9.0             # via matplotlib

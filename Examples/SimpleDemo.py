@@ -6,8 +6,8 @@ model. Here we're just doing a single fold, but typically you'd loop through doi
 
 import numpy as np
 import pandas as pd
-from RCNN_Toolbox import RCNN
-from RCNN_Toolbox import utils
+from RCNN import ModelMaker
+from RCNN import utils
 #from RCNN_Toolbox import Ensembling
 import sys
 sys.setrecursionlimit(1500)
@@ -20,7 +20,7 @@ Chans = X.shape[2]
 Length = X.shape[1]
 nbClasses = len(np.unique(y))
 
-model = RCNN.init(Chans, Length, nbClasses, nbRCL=5, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model = ModelMaker.init(Chans, Length, nbClasses, nbRCL=5, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200)
 
 X_train, y_train, X_test, y_test = utils.train_test_splitter(X, Y)
 model.fit(X_train, y_train)
