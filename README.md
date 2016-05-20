@@ -6,7 +6,7 @@ For decoding electrophysiologic signals using recurrent convolutional neural net
 
 ## Installation
 
-It's easiest to start with a scientific distribution. If you're in academia [Enthought Canopy](https://enthought.com/products/canopy/) is free, and works well for me. People also like Anaconda. I'd recommend you install this in a virtual environment (see [here](http://docs.python-guide.org/en/latest/dev/virtualenvs/)), especially if you're on a shared computer, because I guarantee your labmates will mess up your python environment guaranteed (sorry labmates, you're the best...).
+It's easiest to start with a scientific distribution. If you're in academia [Enthought Canopy](https://enthought.com/products/canopy/) is free, and works well for me. People also like Anaconda. I'd recommend you install this in a virtual environment (see [here](http://docs.python-guide.org/en/latest/dev/virtualenvs/)), especially if you're on a shared computer, because I guarantee your labmates will mess up your python environment (sorry labmates, you're the best...).
 
 ### Dependencies:
 
