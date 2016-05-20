@@ -26,7 +26,7 @@ sudo pip install git+git://github.com/Theano/Theano.git
 - Optional but *HIGHLY* recommended: cuDNN (this will save you lots and lots of time, which you can use to watch Game of Thrones or  [learn a new way to tie your shoes](http://www.fieggen.com/shoelace/ianknot.htm))
 
 
-I like to use Matlab to process my EEG data. If that's the case, you might consider using the Matlab Engine for Python since it makes transferring data between the two programs quite seamless. To install the Matlab Engine for Python, follow the [instructions here](http://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html)
+I like to use Matlab to process my EEG data. If you do too, you might consider using the Matlab Engine for Python since it makes transferring data between the two programs quite seamless. To install the Matlab Engine for Python, follow the [instructions here](http://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html)
 
 
 Finally, to install this package, `cd` to the RCNN-Toolbox folder and run the install command:
