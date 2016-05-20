@@ -13,7 +13,7 @@ from nolearn.lasagne import NeuralNet
 from nolearn.lasagne import BatchIterator
 
 
-def init(nbChannels, length, nbClasses, nbRCL=5,
+def makeModel(nbChannels, length, nbClasses, nbRCL=5,
 		 nbFilters=128, filtersize = 3, epochs=50, update='adam', update_learning_rate=None,
 		 objective_l2=0.0025, earlystopping=False, patience=10, batch_size=64,
 		 verbose=0,):
