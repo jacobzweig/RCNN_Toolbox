@@ -8,7 +8,6 @@ import numpy as np
 import sys
 import os
 from sklearn.cross_validation import train_test_split
-import urllib
 
 
 def train_test_splitter(X,Y, train=None, test=None, test_size=0):
@@ -44,9 +43,10 @@ def reshapeData(X_train, y_train, X_test, y_test):
     return X_train, y_train, X_test, y_test
 
 def DownloadExampleData():
-    url = 'https://www.dropbox.com/s/xwopi7k3knd7vki/exampledata.npz?dl=0'
-    print('Downloading Sample Data...'),
-    urllib.urlretrieve(url, "ExampleData.npz")
-    print('Done!')
+    import urllib
+    url = 'https://www.dropbox.com/s/xwopi7k3knd7vki/exampledata.npz?dl=1'
+    filename = 'exampledata.npz'
+    u = urllib.urlretrieve(url, filename)
+
 
 
