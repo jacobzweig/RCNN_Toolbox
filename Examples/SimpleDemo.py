@@ -17,8 +17,10 @@ sys.setrecursionlimit(1500)
 
 #You want to create variables X formatted as (nTrials x nTimepoints x nElectrodes) and Y formatted as (nTrials x 1)
 #We're going to load some sample data from this paper: http://www.sciencedirect.com/science/article/pii/S0893608009001075
+print('Downloading Example Data...'),
 utils.DownloadExampleData()
-npzfile = np.load('ExampleData.npz')
+print('Done!')
+npzfile = np.load('exampledata.npz')
 X = npzfile['X']
 y = npzfile['y']
 
@@ -32,4 +34,6 @@ X_train, y_train, X_test, y_test = utils.train_test_splitter(X, y)
 model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 accuracy = accuracy_score(y_test, predictions)
+print(accuracy)
+ictions)
 print(accuracy)
