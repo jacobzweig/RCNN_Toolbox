@@ -12,11 +12,15 @@ from RCNN import RCNN
 from RCNN import utils
 #from RCNN_Toolbox import Ensembling
 import sys
+import os
 sys.setrecursionlimit(1500)
 
 #You want to create variables X formatted as (nTrials x nTimepoints x nElectrodes) and Y formatted as (nTrials x 1)
-X = []
-y = []
+#We're going to load some sample data from this paper: http://www.sciencedirect.com/science/article/pii/S0893608009001075
+utils.DownloadExampleData()
+npzfile = np.load('ExampleData.npz')
+X = npzfile['X']
+y = npzfile['y']
 
 Length = X.shape[1]
 Chans = X.shape[2]
@@ -24,7 +28,7 @@ nbClasses = len(np.unique(y))
 
 model = RCNN.makeModel(Chans, Length, nbClasses, nbRCL=5, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200)
 
-X_train, y_train, X_test, y_test = utils.train_test_splitter(X, Y)
+X_train, y_train, X_test, y_test = utils.train_test_splitter(X, y)
 model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 accuracy = accuracy_score(y_test, predictions)
