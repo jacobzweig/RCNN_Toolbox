@@ -11,6 +11,7 @@ import pandas as pd
 from RCNN import RCNN
 from RCNN import utils
 #from RCNN_Toolbox import Ensembling
+from sklearn.metrics import accuracy_score
 import sys
 import os
 sys.setrecursionlimit(1500)
@@ -28,7 +29,7 @@ Length = X.shape[1]
 Chans = X.shape[2]
 nbClasses = len(np.unique(y))
 
-model = RCNN.makeModel(Chans, Length, nbClasses, nbRCL=5, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200)
+model = RCNN.makeModel(Chans, Length, nbClasses, nbRCL=5, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200, verbose=2)
 
 X_train, y_train, X_test, y_test = utils.train_test_splitter(X, y)
 model.fit(X_train, y_train)

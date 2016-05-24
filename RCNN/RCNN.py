@@ -101,7 +101,7 @@ def BuildRCNN(nbChannels, length, nbClasses, nbRCL, nbFilters, filtersize):
 	#Add n RCL stacks - Pooling happens after stacking two RCLs together 
 	# (but divisible by 1 because we start with a normal conv layer)
     for n in range(nbRCL):
-    	if n % 1 == 0:
+    	if n % 2 == 0:
 			l = RCL_block(l, pool=False)
         else:
 			l = RCL_block(l)
