@@ -17,21 +17,19 @@ import os
 sys.setrecursionlimit(1500)
 
 #You want to create variables X formatted as (nTrials x nTimepoints x nElectrodes) and Y formatted as (nTrials x 1)
-#We're going to load some sample data from this paper: http://www.sciencedirect.com/science/article/pii/S0893608009001075
+#We're going to load some sample data from this study: http://www.sciencedirect.com/science/article/pii/S0165027016000741
 print('Downloading Example Data...'),
-utils.DownloadExampleData()
+X, y = utils.GetExampleData()
 print('Done!')
-npzfile = np.load('exampledata.npz')
-X = npzfile['X']
-y = npzfile['y']
+
 
 Length = X.shape[1]
 Chans = X.shape[2]
 nbClasses = len(np.unique(y))
 
-model = RCNN.makeModel(Chans, Length, nbClasses, nbRCL=5, nbFilters=32, earlystopping=True, patience=20, filtersize=3, epochs=200, verbose=2)
+model = RCNN.makeModel(Chans, Length, nbClasses, nbRCL=5, nbFilters=32, earlystopping=True, patience=25, filtersize=3, epochs=200, verbose=1)
 
-X_train, y_train, X_test, y_test = utils.train_test_splitter(X, y)
+X_train, y_train, X_test, y_test = utils.train_test_splitter(X, y, test_size=0.20)
 model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 accuracy = accuracy_score(y_test, predictions)

@@ -10,7 +10,7 @@ import os
 from sklearn.cross_validation import train_test_split
 
 
-def train_test_splitter(X,Y, train=None, test=None, test_size=0):
+def train_test_splitter(X,Y, train=None, test=None, test_size=.20):
     '''
     Split data into train and test splits
     '''
@@ -42,11 +42,16 @@ def reshapeData(X_train, y_train, X_test, y_test):
 
     return X_train, y_train, X_test, y_test
 
-def DownloadExampleData():
+def GetExampleData():
     import urllib
-    url = 'https://www.dropbox.com/s/xwopi7k3knd7vki/exampledata.npz?dl=1'
-    filename = 'exampledata.npz'
+    url = 'https://www.dropbox.com/s/0uaitlwhbmn45vs/Mouse_2Chan.npz?dl=1'
+    filename = 'Mouse_2Chan.npz'
     u = urllib.urlretrieve(url, filename)
+    npzfile = np.load(filename)
+    X = npzfile['X']
+    y = npzfile['y']
+
+    return X, y
 
 
 
