@@ -49,9 +49,9 @@ def GetExampleData():
     u = urllib.urlretrieve(url, filename)
     npzfile = np.load(filename)
     X = npzfile['X']
-    y = npzfile['y']
+    Y = npzfile['Y']
 
-    return X, y
+    return X, Y
 
 
 
