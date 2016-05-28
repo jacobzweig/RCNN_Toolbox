@@ -10,13 +10,19 @@ from RCNN import Ensembling
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, BaggingClassifier, AdaBoostClassifier
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
+from sklearn.metrics import accuracy_score
+
 
 import sys
 sys.setrecursionlimit(1500)
 
 #You want to create variables X formatted as (nTrials x nTimepoints x nElectrodes) and Y formatted as (nTrials x 1)
-X = []
-y = []
+print('Downloading Example Data...'),
+utils.DownloadExampleData()
+print('Done!')
+npzfile = np.load('exampledata.npz')
+X = npzfile['X']
+y = npzfile['y']
 
 Chans = X.shape[2]
 Length = X.shape[1]
@@ -51,13 +57,12 @@ rf = RandomForestClassifier(n_estimators = 200)
 svm0 = svm.SVC(decision_function_shape='ovo', probability=True)
 trees = ExtraTreesClassifier(max_depth=3, n_estimators=200, random_state=0)
 sgd = SGDClassifier(loss="modified_huber", penalty="l2")
-bagging = BaggingClassifier(KNeighborsClassifier(), max_samples=0.5, max_features=0.5)
 booster = AdaBoostClassifier(n_estimators=200)
 
-meta_classifiers = [rf, svm0, trees, sgd, bagging, booster]
+meta_classifiers = [rf, svm0, trees, sgd,  booster]
 #======================
 
-X_train, y_train, X_test, y_test = utils.train_test_splitter(X, Y)
+X_train, y_train, X_test, y_test = utils.train_test_splitter(X, y)
 
 ## Model Blending
 '''
@@ -66,7 +71,7 @@ with 'Ensemble()'. We next fit our model. If you want to do model blending, you'
 the meta level models with  'fit_meta()'. For voting ensembles, we use the call 'majority_vote'. To blend models we call
 'blend()'
 '''
-sclf = Ensemble(classifiers=model_list, meta_classifier = meta_classifiers, use_probas=True, verbose=1)
+sclf = Ensembling.Ensemble(classifiers=model_list, meta_classifier = meta_classifiers, use_probas=True, verbose=1)
 sclf.fit(X_train, y_train, X_test, y_test)
 sclf.fit_meta(X_train, y_train)
 
@@ -78,5 +83,4 @@ accuracy_soft= accuracy_score(y_test, Predictions_soft)
 accuracy_hard = accuracy_score(y_test, Predictions_hard)
 accuracy_blend = accuracy_score(y_test, Predictions_blended)  
 
-print("\nAccuracy: (Blended)%s  (Soft)%s  (Hard)%s \n" %(accuracy_blend, accuracy_soft, accuracy_hard))    
-
+print("\nAccuracy: (Blended)%s  (Soft)%s  (Hard)%s \n" %(accuracy_blend, accuracy_soft, accuracy_hard))   
