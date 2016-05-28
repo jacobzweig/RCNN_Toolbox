@@ -23,6 +23,7 @@ X, y = utils.GetExampleData()
 print('Done!')
 
 
+
 Length = X.shape[1]
 Chans = X.shape[2]
 nbClasses = len(np.unique(y))

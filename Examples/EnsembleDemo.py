@@ -18,11 +18,8 @@ sys.setrecursionlimit(1500)
 
 #You want to create variables X formatted as (nTrials x nTimepoints x nElectrodes) and Y formatted as (nTrials x 1)
 print('Downloading Example Data...'),
-utils.DownloadExampleData()
+X, y = utils.GetExampleData()
 print('Done!')
-npzfile = np.load('exampledata.npz')
-X = npzfile['X']
-y = npzfile['y']
 
 Chans = X.shape[2]
 Length = X.shape[1]
