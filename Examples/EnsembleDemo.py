@@ -62,7 +62,7 @@ booster = AdaBoostClassifier(n_estimators=200)
 meta_classifiers = [rf, svm0, trees, sgd,  booster]
 #======================
 
-X_train, y_train, X_test, y_test = utils.train_test_splitter(X, y)
+X_train, y_train, X_test, y_test = utils.train_test_splitter(X, y, test_size=.25)
 
 ## Model Blending
 '''

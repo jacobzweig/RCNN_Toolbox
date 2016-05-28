@@ -18,8 +18,8 @@ import sys
 
 
 class Ensemble(NeuralNet, ClassifierMixin, TransformerMixin):
-    
-    """A Stacking and Voting classifier for scikit-learn estimators for classification.
+    '''
+    A Stacking and Voting classifier for scikit-learn estimators for classification.
     
     Example:
         
@@ -60,7 +60,8 @@ class Ensemble(NeuralNet, ClassifierMixin, TransformerMixin):
         Fitted classifiers (clones of the original classifiers)
     meta_clf_ : estimator
         Fitted meta-classifier (clone of the original meta-estimator)
-    """
+    '''
+    
     def __init__(self, classifiers, meta_classifier=None,
                  use_probas=False, verbose=0):
 
@@ -99,10 +100,10 @@ class Ensemble(NeuralNet, ClassifierMixin, TransformerMixin):
                 print(clf)
             
             sys.stdout.flush() #flush output to make sure it's printing 
-#            if X_val is not None:
-#                fitted_clf = clf.fit(X, y, X_val, y_val)
-#            else:
-#                fitted_clf = clf.fit(X, y)
+           # if X_val is not None:
+           #     fitted_clf = clf.fit(X, y, X_val, y_val)
+           # else:
+           #     fitted_clf = clf.fit(X, y)
             fitted_clf = clf.fit(X, y)
             
             self.clfs_.append(fitted_clf)
