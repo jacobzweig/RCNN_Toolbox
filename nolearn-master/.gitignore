@@ -1,0 +1,14 @@
+.coverage
+nolearn.egg-info
+cache/
+
+bin/
+dist/
+docs/_build/
+include/
+lib/
+man/
+local
+pip-selfcheck.json
+
+*pyc

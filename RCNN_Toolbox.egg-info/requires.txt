@@ -1,0 +1,7 @@
+theano
+pyyaml
+six
+lasagne
+
+[h5py]
+h5py
