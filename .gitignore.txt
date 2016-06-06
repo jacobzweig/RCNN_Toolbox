@@ -1,0 +1,4 @@
+*.pyc
+build/
+dist/
+RCNN_Toolbox.egg-info/
