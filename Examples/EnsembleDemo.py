@@ -69,7 +69,7 @@ the meta level models with  'fit_meta()'. For voting ensembles, we use the call 
 'blend()'
 '''
 sclf = Ensembling.Ensemble(classifiers=model_list, meta_classifier = meta_classifiers, use_probas=True, verbose=1)
-sclf.fit(X_train, y_train, X_test, y_test)
+sclf.fit(X_train, y_train)
 sclf.fit_meta(X_train, y_train)
 
 Predictions_soft = sclf.majority_vote(X_test, voting='soft')
