@@ -19,8 +19,8 @@ def train_test_splitter(X,Y, train=None, test=None, test_size=.20):
     if train is not None:
         X_train = X[train]
         X_test = X[test]    
-        Y_train = Y[train]
-        Y_test = Y[test]
+        y_train = Y[train]
+        y_test = Y[test]
     else:
         X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = test_size)
 

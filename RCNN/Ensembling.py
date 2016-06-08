@@ -100,10 +100,8 @@ class Ensemble(NeuralNet, ClassifierMixin, TransformerMixin):
                 print(clf)
             
             sys.stdout.flush() #flush output to make sure it's printing 
-            if X_test is not None:
-                fitted_clf = clf.fit(X, y, X_test, y_test)
-            else:
-                fitted_clf = clf.fit(X, y)
+          
+            fitted_clf = clf.fit(X, y)
             
             self.clfs_.append(fitted_clf)
                            
