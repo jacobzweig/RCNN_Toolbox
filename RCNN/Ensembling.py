@@ -78,7 +78,7 @@ class Ensemble(NeuralNet, ClassifierMixin, TransformerMixin):
         self.use_probas = use_probas
         self.verbose = verbose
 
-    def fit(self, X, y, X_val=None, y_val=None, X_test=None, y_test=None):
+    def fit(self, X, y, X_test=None, y_test=None):
         """ Fit ensemble classifers and the meta-classifier.
         """
         self.clfs_ = []
@@ -100,8 +100,8 @@ class Ensemble(NeuralNet, ClassifierMixin, TransformerMixin):
                 print(clf)
             
             sys.stdout.flush() #flush output to make sure it's printing 
-            if X_val is not None:
-                fitted_clf = clf.fit(X, y, X_val, y_val)
+            if X_test is not None:
+                fitted_clf = clf.fit(X, y, X_test, y_test)
             else:
                 fitted_clf = clf.fit(X, y)
             
