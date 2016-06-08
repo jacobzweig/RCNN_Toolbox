@@ -46,8 +46,12 @@ def GetExampleData():
     import urllib
     url = 'https://www.dropbox.com/s/0uaitlwhbmn45vs/Mouse_2Chan.npz?dl=1'
     filename = 'Mouse_2Chan.npz'
-    u = urllib.urlretrieve(url, filename)
-    npzfile = np.load(filename)
+    if os.path.isfile(filename):
+            npzfile = np.load(filename)
+    else:
+        u = urllib.urlretrieve(url, filename)
+        npzfile = np.load(filename)
+        
     X = npzfile['X']
     Y = npzfile['Y']
 
